@@ -1,5 +1,5 @@
-#include <iostream>
-#include <string>
+#include<iostream>
+#include<string>
 
 using namespace std;
 
@@ -16,9 +16,9 @@ public:
 
     BankAccount(int accNo, string name, double bal)
     {
-        accountNumber = accNo;
-        accountHolderName = name;
-        balance = bal;
+        accountNumber=accNo;
+        accountHolderName=name;
+        balance=bal;
     }
 
     virtual void deposit(double amount)
@@ -170,11 +170,11 @@ public:
 int main()
 {
     
-    SavingsAccount s1(101, "Rudra", 5000, 5);
+    SavingsAccount s1(200, "Rudra", 5000, 5);
 
-    CheckingAccount c1(102, "Meet", 8000, 2000);
+    CheckingAccount c1(300, "Rudra", 8000, 2000);
 
-    FixedDepositAccount f1(103, "Yash", 10000, 12, 7);
+    FixedDepositAccount f1(500, "Rudra", 10000, 12, 7);
 
     int choice;
     double amount;
@@ -182,11 +182,11 @@ int main()
     do
     {
         cout << "\n========== BANKING SYSTEM ==========\n";
-        cout << "1. Savings Account\n";
-        cout << "2. Checking Account\n";
-        cout << "3. Fixed Deposit Account\n";
-        cout << "4. Polymorphism Demo\n";
-        cout << "0. Exit\n";
+        cout << "0. Savings Account\n";
+        cout << "1. Checking Account\n";
+        cout << "2. Fixed Deposit Account\n";
+        cout << "3. Polymorphism Demo\n";
+        cout << "4. Exit\n";
         cout << "Enter Choice : ";
         cin >> choice;
 
@@ -199,11 +199,11 @@ int main()
             do
             {
                 cout << "\n--- Savings Account Menu ---\n";
-                cout << "1. Deposit\n";
-                cout << "2. Withdraw\n";
-                cout << "3. Display Info\n";
-                cout << "4. Calculate Interest\n";
-                cout << "0. Back\n";
+                cout << "0. Deposit\n";
+                cout << "1. Withdraw\n";
+                cout << "2. Display Info\n";
+                cout << "3. Calculate Interest\n";
+                cout << "4. Back\n";
                 cout << "Enter Choice : ";
                 cin >> ch;
 
@@ -242,11 +242,11 @@ int main()
             do
             {
                 cout << "\n--- Checking Account Menu ---\n";
-                cout << "1. Deposit\n";
-                cout << "2. Withdraw\n";
-                cout << "3. Display Info\n";
-                cout << "4. Check Overdraft\n";
-                cout << "0. Back\n";
+                cout << "0. Deposit\n";
+                cout << "1. Withdraw\n";
+                cout << "2. Display Info\n";
+                cout << "3. Check Overdraft\n";
+                cout << "4. Back\n";
                 cout << "Enter Choice : ";
                 cin >> ch;
 
@@ -285,11 +285,11 @@ int main()
             do
             {
                 cout << "\n--- Fixed Deposit Menu ---\n";
-                cout << "1. Deposit\n";
-                cout << "2. Withdraw\n";
-                cout << "3. Display Info\n";
-                cout << "4. Calculate Interest\n";
-                cout << "0. Back\n";
+                cout << "0. Deposit\n";
+                cout << "1. Withdraw\n";
+                cout << "2. Display Info\n";
+                cout << "3. Calculate Interest\n";
+                cout << "4. Back\n";
                 cout << "Enter Choice : ";
                 cin >> ch;
 
@@ -346,3 +346,224 @@ int main()
 
     } while (choice != 0);
 }
+
+/*
+output
+	
+========== BANKING SYSTEM ==========
+1. Savings Account
+2. Checking Account
+3. Fixed Deposit Account
+4. Polymorphism Demo
+0. Exit
+Enter Choice : 1
+
+--- Savings Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 1
+Enter Amount : 3000
+Amount Deposited Successfully!
+
+--- Savings Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 2
+Enter Amount : 3000
+Withdrawal Successful!
+
+--- Savings Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 3
+
+===== Account Details =====
+Account Number : 101
+Account Holder : Rudra
+Balance        : 5000
+Account Type   : Savings Account
+Interest Rate  : 5%
+
+--- Savings Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 4
+Savings Account Interest : 250
+
+--- Savings Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice :
+0
+
+========== BANKING SYSTEM ==========
+1. Savings Account
+2. Checking Account
+3. Fixed Deposit Account
+4. Polymorphism Demo
+0. Exit
+Enter Choice : 2
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 1
+Enter Amount : 3000
+Amount Deposited Successfully!
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 1
+Enter Amount : 3000
+Amount Deposited Successfully!
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 2
+Enter Amount : 6000
+Withdrawal Successful!
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 3
+
+===== Account Details =====
+Account Number : 102
+Account Holder : Meet
+Balance        : 8000
+Account Type   : Checking Account
+Overdraft Limit: 2000
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 4
+Overdraft Limit : 2000
+
+--- Checking Account Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Check Overdraft
+0. Back
+Enter Choice : 0
+
+========== BANKING SYSTEM ==========
+1. Savings Account
+2. Checking Account
+3. Fixed Deposit Account
+4. Polymorphism Demo
+0. Exit
+Enter Choice : 3
+
+--- Fixed Deposit Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 1
+Enter Amount : 3000
+Amount Deposited Successfully!
+
+--- Fixed Deposit Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 2
+Enter Amount : 3000
+Withdrawal Successful!
+
+--- Fixed Deposit Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 3
+
+===== Account Details =====
+Account Number : 103
+Account Holder : Yash
+Balance        : 10000
+Account Type   : Fixed Deposit Account
+Term (Months)  : 12
+Interest Rate  : 7%
+
+--- Fixed Deposit Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 4
+Fixed Deposit Interest : 700
+
+--- Fixed Deposit Menu ---
+1. Deposit
+2. Withdraw
+3. Display Info
+4. Calculate Interest
+0. Back
+Enter Choice : 0
+
+========== BANKING SYSTEM ==========
+1. Savings Account
+2. Checking Account
+3. Fixed Deposit Account
+4. Polymorphism Demo
+0. Exit
+Enter Choice : 4
+
+===== POLYMORPHISM DEMO =====
+Savings Account Interest : 250
+Fixed Deposit Interest : 700
+
+========== BANKING SYSTEM ==========
+1. Savings Account
+2. Checking Account
+3. Fixed Deposit Account
+4. Polymorphism Demo
+0. Exit
+Enter Choice : 0
+Thank You for Using Banking System!
+
+--------------------------------
+Process exited after 286.5 seconds with return value 0
+Press any key to continue . .  
+*/
