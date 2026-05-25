@@ -317,8 +317,6 @@ int main()
     {
         delete libraryItems[i];
     }
-
-    return 0;
 }
 
 /*
