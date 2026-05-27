@@ -23,17 +23,17 @@ public:
         isCheckedOut = false;
     }
 
-    string getTitle() const
+    string getTitle()
     {
         return title;
     }
 
-    string getAuthor() const
+    string getAuthor()
     {
         return author;
     }
 
-    string getDueDate() const
+    string getDueDate()
     {
         return dueDate;
     }
@@ -55,7 +55,7 @@ public:
 
     virtual void checkOut() = 0;
     virtual void returnItem() = 0;
-    virtual void displayDetails() const = 0;
+    virtual void displayDetails() = 0;
 
     virtual ~LibraryItem() {}
 };
@@ -72,7 +72,7 @@ public:
         isbn = i;
     }
 
-    void checkOut() override
+    void checkOut()
     {
         if (!isCheckedOut)
         {
@@ -85,7 +85,7 @@ public:
         }
     }
 
-    void returnItem() override
+    void returnItem()
     {
         if (isCheckedOut)
         {
@@ -98,7 +98,7 @@ public:
         }
     }
 
-    void displayDetails() const override
+    void displayDetails()
     {
         cout << "\n===== BOOK DETAILS =====\n";
         cout << "Title    : " << getTitle() << endl;
@@ -120,23 +120,23 @@ public:
         duration = dur;
     }
 
-    void checkOut() override
+    void checkOut()
     {
         cout << "DVD Checked Out Successfully.\n";
     }
 
-    void returnItem() override
+    void returnItem()
     {
         cout << "DVD Returned Successfully.\n";
     }
 
-    void displayDetails() const override
+    void displayDetails()
     {
         cout << "\n===== DVD DETAILS =====\n";
-        cout << "Title      : " << getTitle() << endl;
-        cout << "Author     : " << getAuthor() << endl;
-        cout << "Due Date   : " << getDueDate() << endl;
-        cout << "Duration   : " << duration << " Minutes\n";
+        cout << "Title    : " << getTitle() << endl;
+        cout << "Author   : " << getAuthor() << endl;
+        cout << "Due Date : " << getDueDate() << endl;
+        cout << "Duration : " << duration << " Minutes\n";
     }
 };
 
@@ -152,17 +152,17 @@ public:
         issueNumber = issue;
     }
 
-    void checkOut() override
+    void checkOut()
     {
         cout << "Magazine Checked Out Successfully.\n";
     }
 
-    void returnItem() override
+    void returnItem()
     {
         cout << "Magazine Returned Successfully.\n";
     }
 
-    void displayDetails() const override
+    void displayDetails()
     {
         cout << "\n===== MAGAZINE DETAILS =====\n";
         cout << "Title        : " << getTitle() << endl;
@@ -187,19 +187,10 @@ int main()
         cout << "3. Add Magazine\n";
         cout << "4. Display All Items\n";
         cout << "5. Exit\n";
-        cout << "Enter Choice: ";
+        cout << "Enter Choice : ";
 
-        cin >> choice: ";
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-            cout << "Invalid Input!\n";
-            continue;
-        }
-
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin >> choice;
+        cin.ignore();
 
         switch (choice)
         {
@@ -207,20 +198,22 @@ int main()
         {
             string title, author, dueDate, isbn;
 
-            cout << "Enter Book Title: ";
+            cout << "Enter Book Title : ";
             getline(cin, title);
 
-            cout << "Enter Author: ";
+            cout << "Enter Author : ";
             getline(cin, author);
 
-            cout << "Enter Due Date: ";
+            cout << "Enter Due Date : ";
             getline(cin, dueDate);
 
-            cout << "Enter ISBN: ";
+            cout << "Enter ISBN : ";
             getline(cin, isbn);
 
-            libraryItems[count++] =
+            libraryItems[count] =
                 new Book(title, author, dueDate, isbn);
+
+            count++;
 
             cout << "Book Added Successfully!\n";
 
@@ -232,22 +225,23 @@ int main()
             string title, author, dueDate;
             int duration;
 
-            cout << "Enter DVD Title: ";
+            cout << "Enter DVD Title : ";
             getline(cin, title);
 
-            cout << "Enter Author: ";
+            cout << "Enter Author : ";
             getline(cin, author);
 
-            cout << "Enter Due Date: ";
+            cout << "Enter Due Date : ";
             getline(cin, dueDate);
 
-            cout << "Enter Duration: ";
+            cout << "Enter Duration : ";
             cin >> duration;
+            cin.ignore();
 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-            libraryItems[count++] =
+            libraryItems[count] =
                 new DVD(title, author, dueDate, duration);
+
+            count++;
 
             cout << "DVD Added Successfully!\n";
 
@@ -259,22 +253,23 @@ int main()
             string title, author, dueDate;
             int issue;
 
-            cout << "Enter Magazine Title: ";
+            cout << "Enter Magazine Title : ";
             getline(cin, title);
 
-            cout << "Enter Author: ";
+            cout << "Enter Author : ";
             getline(cin, author);
 
-            cout << "Enter Due Date: ";
+            cout << "Enter Due Date : ";
             getline(cin, dueDate);
 
-            cout << "Enter Issue Number: ";
+            cout << "Enter Issue Number : ";
             cin >> issue;
+            cin.ignore();
 
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
-            libraryItems[count++] =
+            libraryItems[count] =
                 new Magazine(title, author, dueDate, issue);
+
+            count++;
 
             cout << "Magazine Added Successfully!\n";
 
@@ -291,7 +286,7 @@ int main()
             {
                 for (int i = 0; i < count; i++)
                 {
-                    cout << "\nItem ID: " << i << endl;
+                    cout << "\nItem ID : " << i + 1 << endl;
                     libraryItems[i]->displayDetails();
                 }
             }
@@ -317,22 +312,23 @@ int main()
     {
         delete libraryItems[i];
     }
+
+    return 0;
 }
 
 /*
 	output
-	
 	========== LIBRARY MANAGEMENT SYSTEM ==========
 1. Add Book
 2. Add DVD
 3. Add Magazine
 4. Display All Items
 5. Exit
-Enter Choice: 1
-Enter Book Title: sapanose safalata tak ki sidi
-Enter Author: dhyey kakadiya
-Enter Due Date: 2 4 2026
-Enter ISBN: 6246666
+Enter Choice : 1
+Enter Book Title : rich dad poor dad
+Enter Author : robot d. kitosaki
+Enter Due Date : 2 4 5048
+Enter ISBN : 4675656
 Book Added Successfully!
 
 ========== LIBRARY MANAGEMENT SYSTEM ==========
@@ -341,11 +337,11 @@ Book Added Successfully!
 3. Add Magazine
 4. Display All Items
 5. Exit
-Enter Choice: 2
-Enter DVD Title: sucses jourany
-Enter Author: bhano 
-Enter Due Date: 3 5 2026
-Enter Duration: 444
+Enter Choice : 2
+Enter DVD Title : sadhana
+Enter Author : nayan co.
+Enter Due Date : 2 5 2015
+Enter Duration : 5
 DVD Added Successfully!
 
 ========== LIBRARY MANAGEMENT SYSTEM ==========
@@ -354,11 +350,11 @@ DVD Added Successfully!
 3. Add Magazine
 4. Display All Items
 5. Exit
-Enter Choice: 3
-Enter Magazine Title: rich dad poor dad
-Enter Author: robot d. kiyosaki
-Enter Due Date: 3 5 2026
-Enter Issue Number: 55435646
+Enter Choice : 3
+Enter Magazine Title : welcome to you
+Enter Author : robot
+Enter Due Date : 2 4 2026
+Enter Issue Number : 656565656
 Magazine Added Successfully!
 
 ========== LIBRARY MANAGEMENT SYSTEM ==========
@@ -367,31 +363,31 @@ Magazine Added Successfully!
 3. Add Magazine
 4. Display All Items
 5. Exit
-Enter Choice: 4
+Enter Choice : 4
 
-Item ID: 0
+Item ID : 1
 
 ===== BOOK DETAILS =====
-Title    : sapanose safalata tak ki sidi
-Author   : dhyey kakadiya
-Due Date : 2 4 2026
-ISBN     : 6246666
+Title    : rich dad poor dad
+Author   : robot d. kitosaki
+Due Date : 2 4 5048
+ISBN     : 4675656
 
-Item ID: 1
+Item ID : 2
 
 ===== DVD DETAILS =====
-Title      : sucses jourany
-Author     : bhano
-Due Date   : 3 5 2026
-Duration   : 444 Minutes
+Title    : sadhana
+Author   : nayan co.
+Due Date : 2 5 2015
+Duration : 5 Minutes
 
-Item ID: 2
+Item ID : 3
 
 ===== MAGAZINE DETAILS =====
-Title        : rich dad poor dad
-Author       : robot d. kiyosaki
-Due Date     : 3 5 2026
-Issue Number : 55435646
+Title        : welcome to you
+Author       : robot
+Due Date     : 2 4 2026
+Issue Number : 656565656
 
 ========== LIBRARY MANAGEMENT SYSTEM ==========
 1. Add Book
@@ -399,11 +395,10 @@ Issue Number : 55435646
 3. Add Magazine
 4. Display All Items
 5. Exit
-Enter Choice: 5
+Enter Choice : 5
 Program Exited.
 
 --------------------------------
-Process exited after 147.9 seconds with return value 0
+Process exited after 137.4 seconds with return value 0
 Press any key to continue . . .
-
 */
